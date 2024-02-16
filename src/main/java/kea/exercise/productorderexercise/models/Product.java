@@ -1,5 +1,6 @@
 package kea.exercise.productorderexercise.models;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +21,10 @@ public class Product {
         this.description = description;
         this.price = price;
         this.EAN13 = EAN13;
+    }
+
+    public Product() {
+
     }
 
     public int getId() {

@@ -2,6 +2,7 @@ package kea.exercise.productorderexercise.repositories;
 
 import kea.exercise.productorderexercise.models.OrderLine;
 import kea.exercise.productorderexercise.models.Product;
+import org.hibernate.query.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -32,8 +33,14 @@ public class InitData implements CommandLineRunner {
 
         OrderLine line1 = new OrderLine(kyllingebryst, 10);
         OrderLine line2 = new OrderLine(kyllingebryst, 5);
+        OrderLine line3 = new OrderLine(tarteletter, 10);
+        OrderLine line4 = new OrderLine(tarteletter, 2);
+        OrderLine line5 = new OrderLine(snickers, 1);
         orderRepository.save(line1);
         orderRepository.save(line2);
+        orderRepository.save(line3);
+        orderRepository.save(line4);
+        orderRepository.save(line5);
 
 
     }
