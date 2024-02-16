@@ -14,8 +14,14 @@ public class Order {
     private LocalDate orderDate;
     private boolean confirmed;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<OrderLine> orderLines;
+
+    public Order(LocalDate orderDate, boolean confirmed, List<OrderLine> orderLines) {
+        this.orderDate = orderDate;
+        this.confirmed = confirmed;
+        this.orderLines = orderLines;
+    }
 
     public int getId() {
         return id;

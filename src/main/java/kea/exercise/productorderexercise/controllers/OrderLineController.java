@@ -1,7 +1,7 @@
 package kea.exercise.productorderexercise.controllers;
 
 import kea.exercise.productorderexercise.models.OrderLine;
-import kea.exercise.productorderexercise.repositories.OrderRepository;
+import kea.exercise.productorderexercise.repositories.OrderLineRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,9 +10,9 @@ import java.util.List;
 @RequestMapping("/orderlines")
 public class OrderLineController {
 
-    private OrderRepository orderRepository;
+    private OrderLineRepository orderRepository;
 
-    public OrderLineController(OrderRepository orderRepository) {
+    public OrderLineController(OrderLineRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
 

@@ -1,21 +1,26 @@
 package kea.exercise.productorderexercise.repositories;
 
+import kea.exercise.productorderexercise.models.Order;
 import kea.exercise.productorderexercise.models.OrderLine;
 import kea.exercise.productorderexercise.models.Product;
-import org.hibernate.query.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Component
 public class InitData implements CommandLineRunner {
 
     @Autowired
     private ProductRepository productRepository;
+    private OrderLineRepository orderLineRepository;
     private OrderRepository orderRepository;
 
-    public InitData(ProductRepository productRepository, OrderRepository orderRepository){
+    public InitData(ProductRepository productRepository, OrderLineRepository orderLineRepository, OrderRepository orderRepository) {
         this.productRepository = productRepository;
+        this.orderLineRepository = orderLineRepository;
         this.orderRepository = orderRepository;
     }
 
@@ -36,12 +41,9 @@ public class InitData implements CommandLineRunner {
         OrderLine line3 = new OrderLine(tarteletter, 10);
         OrderLine line4 = new OrderLine(tarteletter, 2);
         OrderLine line5 = new OrderLine(snickers, 1);
-        orderRepository.save(line1);
-        orderRepository.save(line2);
-        orderRepository.save(line3);
-        orderRepository.save(line4);
-        orderRepository.save(line5);
 
+        Order order = new Order(LocalDate.now(), true, List.of(line4, line2, line5));
+        orderRepository.save(order);
 
     }
 }
