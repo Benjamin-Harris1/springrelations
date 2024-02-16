@@ -2,9 +2,7 @@ package kea.exercise.productorderexercise.controllers;
 
 import kea.exercise.productorderexercise.models.OrderLine;
 import kea.exercise.productorderexercise.repositories.OrderRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +19,10 @@ public class OrderLineController {
     @GetMapping
     public List<OrderLine> getAll(){
         return orderRepository.findAll();
+    }
+
+    @PostMapping
+    public OrderLine createOrderLine(@RequestBody OrderLine orderLine){
+        return orderRepository.save(orderLine);
     }
 }
