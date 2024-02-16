@@ -23,6 +23,10 @@ public class Order {
         this.orderLines = orderLines;
     }
 
+    public Order(){
+
+    }
+
     public int getId() {
         return id;
     }

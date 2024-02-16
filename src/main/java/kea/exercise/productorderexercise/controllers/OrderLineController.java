@@ -10,19 +10,19 @@ import java.util.List;
 @RequestMapping("/orderlines")
 public class OrderLineController {
 
-    private OrderLineRepository orderRepository;
+    private OrderLineRepository orderLineRepository;
 
     public OrderLineController(OrderLineRepository orderRepository) {
-        this.orderRepository = orderRepository;
+        this.orderLineRepository = orderRepository;
     }
 
     @GetMapping
     public List<OrderLine> getAll(){
-        return orderRepository.findAll();
+        return orderLineRepository.findAll();
     }
 
     @PostMapping
     public OrderLine createOrderLine(@RequestBody OrderLine orderLine){
-        return orderRepository.save(orderLine);
+        return orderLineRepository.save(orderLine);
     }
 }
