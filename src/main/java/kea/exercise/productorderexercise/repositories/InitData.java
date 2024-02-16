@@ -1,5 +1,6 @@
 package kea.exercise.productorderexercise.repositories;
 
+import kea.exercise.productorderexercise.models.OrderLine;
 import kea.exercise.productorderexercise.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -10,9 +11,11 @@ public class InitData implements CommandLineRunner {
 
     @Autowired
     private ProductRepository productRepository;
+    private OrderRepository orderRepository;
 
-    public InitData(ProductRepository productRepository){
+    public InitData(ProductRepository productRepository, OrderRepository orderRepository){
         this.productRepository = productRepository;
+        this.orderRepository = orderRepository;
     }
 
     public void run(String... args){
@@ -26,5 +29,12 @@ public class InitData implements CommandLineRunner {
         productRepository.save(tarteletter);
         productRepository.save(rejer);
         productRepository.save(snickers);
+
+        OrderLine line1 = new OrderLine(kyllingebryst, 10);
+        OrderLine line2 = new OrderLine(kyllingebryst, 5);
+        orderRepository.save(line1);
+        orderRepository.save(line2);
+
+
     }
 }
